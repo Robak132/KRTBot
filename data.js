@@ -1,1 +1,4 @@
-
+module.exports = {
+    token:``,
+    prefix:`>`,
+}
