@@ -11,21 +11,21 @@ const data = require("./data");
 const GMrank = require('./GMrank.json');
 
 client.on("message", newRank => {
-    if (newRank.content.startsWith(data.prefix + "rank")) {
-      console.log("Komenda wykryta");
+  if (newRank.content.startsWith(data.prefix + "rank")) {
+    console.log("Komenda wykryta");
 
-      //Zabezpieczenia
-      if (newRank.member == null) return newRank.reply("Komendy można użyć tylko na serwerze")
-      if (newRank.mentions.users.first() == null) return newRank.reply("Nie wybrano użytkownika")
+    //Zabezpieczenia
+    if (newRank.member == null) return newRank.reply("Komendy można użyć tylko na serwerze")
+    if (newRank.mentions.users.first() == null) return newRank.reply("Nie wybrano użytkownika")
 
-      GMrank['GMS'].forEach(GMID => {
-        if (newRank.author.id == GMID["GMID"]) {
-          console.log("osoba jest mistrzem gry");
+    GMrank['GMS'].forEach(GMID => {
+      if (newRank.author.id == GMID["GMID"]) {
+        console.log("osoba jest mistrzem gry");
 
-          let role = newRank.guild.roles.cache.find(r => r.id === GMID["RankID"]);
-          //Wyszukujemy roli korzystając z RankID
-          let member = newRank.mentions.members.first();
-          member.roles.add(role);
+        let role = newRank.guild.roles.cache.find(r => r.id === GMID["RankID"]);
+        //Wyszukujemy roli korzystając z RankID
+        let member = newRank.mentions.members.first();
+        member.roles.add(role);
   }})}
 })
 
