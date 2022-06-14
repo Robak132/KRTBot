@@ -10,6 +10,11 @@ const client = new Client({
 const data = require("./data");
 const GMrank = require('./GMrank.json');
 
+client.on("ready", () => {
+    console.log(`Logged in as ${client.user.tag}!`);
+    client.user.setStatus(`online`);
+});
+
 client.on("message", newRank => {
   if (newRank.content.toLowerCase().startsWith(data.prefix + "rank")) {
     console.log("Komenda wykryta");
