@@ -11,7 +11,7 @@ const data = require("./data");
 const GMrank = require('./GMrank.json');
 
 client.on("message", newRank => {
-  if (newRank.content.startsWith(data.prefix + "rank")) {
+  if (newRank.content.toLowerCase().startsWith(data.prefix + "rank")) {
     console.log("Komenda wykryta");
 
     //Zabezpieczenia
@@ -22,6 +22,7 @@ client.on("message", newRank => {
       if (newRank.author.id == GMID["GMID"]) {
         console.log("osoba jest mistrzem gry");
 
+        if (newRank.guild.roles.cache.find(r => r.id === GMID["RankID"]) == null) return newRank.reply("Ranga nie istnieje")
         let role = newRank.guild.roles.cache.find(r => r.id === GMID["RankID"]);
         //Wyszukujemy roli korzystając z RankID
         let member = newRank.mentions.members.first();
@@ -30,7 +31,7 @@ client.on("message", newRank => {
 })
 
 client.on("message", async set => {
-  if (set.content.startsWith(data.prefix + "set")) {
+  if (set.content.toLowerCase().startsWith(data.prefix + "set")) {
     console.log("Komenda wykryta");
 
     //Zabezpieczenia
