@@ -1,12 +1,9 @@
 {
-  "name": "tzeneh",
+  "name": "krt_bot",
   "version": "0.0.1",
-  "description": "Przemyk gej",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Tzem",
+  "description": "Bot for \"KRT - Kości Robią Turlu\" RPG server",
+  "main": "GMbot.js",
+  "author": "Tzem, Robak",
   "license": "ISC",
   "dependencies": {
     "@napi-rs/canvas": "^0.1.21",
