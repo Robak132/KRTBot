@@ -4,11 +4,11 @@ const client = new Client({
     intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_EMOJIS_AND_STICKERS", "GUILD_INTEGRATIONS", "GUILD_WEBHOOKS", "GUILD_INVITES", "GUILD_VOICE_STATES", "GUILD_PRESENCES", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILD_MESSAGE_TYPING", "DIRECT_MESSAGES", "DIRECT_MESSAGE_REACTIONS", "DIRECT_MESSAGE_TYPING"],
     partials: ["USER", "REACTION", "MESSAGE", "GUILD_SCHEDULED_EVENT", "GUILD_MEMBER", "CHANNEL"]
 })
-const data = require("./data");
+const config = require("./config.json");
 const GM_ranks = require('./GMrank.json');
 
 client.on("message", newRank => {
-    if (newRank.content.toLowerCase().startsWith(data.prefix + "rank")) {
+    if (newRank.content.toLowerCase().startsWith(config.prefix + "rank")) {
         console.log("Komenda wykryta");
 
         //Zabezpieczenia
@@ -30,7 +30,7 @@ client.on("message", newRank => {
 })
 
 client.on("message", async set => {
-    if (set.content.toLowerCase().startsWith(data.prefix + "set")) {
+    if (set.content.toLowerCase().startsWith(config.prefix + "set")) {
         console.log("Komenda wykryta");
 
         //Zabezpieczenia
@@ -47,4 +47,4 @@ client.on("message", async set => {
     }
 })
 
-client.login(data.token).then(() => console.log("Bot logged"));
+client.login(config.token).then(() => console.log("Bot logged"));
